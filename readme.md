@@ -1,0 +1,1 @@
+docker run --detach --rm --name some-mariadb -p 3306:3306 -v maria_db_volume:/var/run/mysqld --env MARIADB_USER=kevin --env MARIADB_PASSWORD=my_cool_secret --env MARIADB_ROOT_PASSWORD=my-secret-pw  mariadb:latest
