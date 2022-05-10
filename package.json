@@ -1,21 +1,22 @@
 {
-  "name": "class_js",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "type": "module",
-  "dependencies": {
-    "cors": "^2.8.5",
-    "dotenv": "^16.0.1",
-    "express": "^4.18.1",
-    "mariadb": "^3.0.0",
-    "nodemon": "^2.0.16",
-    "sequelize": "^6.19.0"
-  },
-  "devDependencies": {},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC"
+    "name": "class_js",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "type": "module",
+    "dependencies": {
+        "cors": "^2.8.5",
+        "dotenv": "^16.0.1",
+        "express": "^4.18.1",
+        "mariadb": "^3.0.0",
+        "sequelize": "^6.19.0"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.16"
+    },
+    "scripts": {
+        "start": "nodemon index.js"
+    },
+    "author": "",
+    "license": "ISC"
 }
