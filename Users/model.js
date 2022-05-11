@@ -2,7 +2,7 @@ import { Sequelize, DataTypes, Model } from 'sequelize';
 import mysql from 'mysql2/promise.js';
 
 const db = {
-    url: process.env.MARIADB_URL,
+    host: process.env.MARIADB_URL,
     port: process.env.MARIADB_PORT,
     user: process.env.ROOT_USER,
     password: process.env.ROOT_PASSWORD
