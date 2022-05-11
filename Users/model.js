@@ -26,7 +26,7 @@ User.init(
             defaultValue: Sequelize.UUIDV4,
             primaryKey: true
         },
-        nickname: {
+        user: {
             type: DataTypes.STRING,
             allowNull: false
         },
@@ -51,7 +51,7 @@ sequelize
     .then(async () => {
         console.info('Table Users : Connected!');
         const users = await User.findAll();
-        // if (users.length <= 0) User.create({ name: "kevin" });
+        if (users.length <= 0) User.create({ user: 'John', email: 'john@doe.com', password: 'doe' });
     })
     .catch(error => {
         console.error({ message: "Users table can't connect!", error: error });
