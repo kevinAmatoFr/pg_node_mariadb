@@ -4,14 +4,14 @@ import mysql from 'mysql2/promise.js';
 const db = {
     url: process.env.MARIADB_URL,
     port: process.env.MARIADB_PORT,
-    user: process.env.USERNAME,
-    password: process.env.PASSWORD
+    user: process.env.ROOT_USER,
+    password: process.env.ROOT_PASSWORD
 };
 const connection = await mysql.createConnection(db);
 
 await connection.query(`CREATE DATABASE IF NOT EXISTS chroniques_oubliees;`);
 
-const sequelize = new Sequelize('chroniques_oubliees', process.env.USERNAME, process.env.PASSWORD, {
+const sequelize = new Sequelize('chroniques_oubliees', process.env.ROOT_USER, process.env.ROOT_PASSWORD, {
     host: process.env.MARIADB_URL,
     dialect: 'mariadb',
     logging: false
