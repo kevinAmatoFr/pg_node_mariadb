@@ -1,17 +1,21 @@
-import { Sequelize, DataTypes, Model } from "sequelize";
+import { Sequelize, DataTypes, Model } from 'sequelize';
+import mysql from 'mysql2/promise.js';
 
-import config from "../utils/config.js";
+const db = {
+    url: process.env.MARIADB_URL,
+    port: process.env.MARIADB_PORT,
+    user: process.env.USERNAME,
+    password: process.env.PASSWORD
+};
+const connection = await mysql.createConnection(db);
 
-const sequelize = new Sequelize(
-    "chroniques_oubliees",
-    config.db.username,
-    config.db.password,
-    {
-        host: process.env.MARIADB_URL,
-        dialect: "mariadb",
-        logging: false,
-    }
-);
+await connection.query(`CREATE DATABASE IF NOT EXISTS chroniques_oubliees;`);
+
+const sequelize = new Sequelize('chroniques_oubliees', process.env.USERNAME, process.env.PASSWORD, {
+    host: process.env.MARIADB_URL,
+    dialect: 'mariadb',
+    logging: false
+});
 
 export default class User extends Model {}
 
@@ -20,35 +24,35 @@ User.init(
         id: {
             type: Sequelize.UUID,
             defaultValue: Sequelize.UUIDV4,
-            primaryKey: true,
+            primaryKey: true
         },
         nickname: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: false
         },
         email: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: false
         },
         password: {
             type: DataTypes.STRING,
-            allowNull: false,
-        },
+            allowNull: false
+        }
     },
     {
-        modelName: "Users",
+        modelName: 'Users',
         logging: false,
-        sequelize,
+        sequelize
     }
 );
 
 sequelize
     .sync()
     .then(async () => {
-        console.info("Table Users : Connected!");
+        console.info('Table Users : Connected!');
         const users = await User.findAll();
         // if (users.length <= 0) User.create({ name: "kevin" });
     })
-    .catch((error) => {
+    .catch(error => {
         console.error({ message: "Users table can't connect!", error: error });
     });
