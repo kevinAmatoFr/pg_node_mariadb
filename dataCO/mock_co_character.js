@@ -1,5 +1,5 @@
 const race = {
-    ddmiElfe: 'Demi-elfe',
+    demiElfe: 'Demi-elfe',
     demiOrque: 'Demi-orque',
     hautElfe: 'Haut-elfe',
     sylvainElfe: 'Sylvain-Elfe',
@@ -20,12 +20,12 @@ const profils = {
     guerrier: 'Guerrier',
     magicien: 'Magicien',
     moine: 'Moine',
-    nécromancien: 'Nécromancien',
-    prêtre: 'Prêtre',
+    necromancien: 'Nécromancien',
+    pretre: 'Prêtre',
     rodeur: 'Rôdeur',
     voleur: 'Voleur'
 };
 
 const voies = {};
 
-module.exports = cp;
+module.exports = co;
